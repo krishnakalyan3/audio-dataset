@@ -30,7 +30,7 @@ def process_stem(stem, working_dir):
 
     # Prepare JSON
     current_uuid = str(uuid.uuid4())
-    json_dic = {"text": txt_encode.strip()}
+    json_dic = {"text": txt_encode.strip(), "speaker_id": str(stem["speaker_id"])}
     json_save_path = working_dir  / (current_uuid + ".json")
     json_dump(json_dic, json_save_path)
 
@@ -51,4 +51,7 @@ if __name__ == '__main__':
 
     #for i in ds_audio:
     #    process_stem(i, Path(working_dir))
-    
+
+# python merge_dir.py --root_dir /home/evobits/krishna/parler2/dev --to_rename  True
+# python merge_dir.py --root_dir /home/evobits/krishna/parler2/test --to_rename  True
+# python3 make_tar.py --input /home/evobits/krishna/parler2/ --output output --dataclass dev --num_element 512
